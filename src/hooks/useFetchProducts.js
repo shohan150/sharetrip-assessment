@@ -11,7 +11,7 @@ const useFetchProducts = () => {
       setError(null);
 
       try {
-        const response = await fetch('https://dummyjson.com/products?limit=8');
+        const response = await fetch('https://dummyjson.com/products?limit=10');
         const allProducts = await response.json();
         setProducts(allProducts.products);
       } catch (err) {

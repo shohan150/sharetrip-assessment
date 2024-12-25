@@ -1,14 +1,14 @@
+import ProductDetails from "./ProductDetails";
+import ProductImage from "./ProductImage";
+
 export default function ProductCard({product}) {
   return (
-    <div>
-      <img src={product?.thumbnail} alt={product?.title} />
-      <h6>{product.brand}</h6>
-      <h4>{product.title}</h4>
+    <div className="group/product relative border border-gray-200 rounded-md shadow-md flex flex-col items-stretch hover:scale-105 hover:shadow-lg transition-transform duration-200">
 
-      <div className="flex gap-2">
-         <p>{product.price}</p>
-         <p>{product.discountPercentage}</p>
-      </div>
+      <ProductImage product={product} />
+
+      <ProductDetails product={product} />
+      
     </div>
   )
 }
