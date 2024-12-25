@@ -1,4 +1,5 @@
 import { FaRegHeart } from "react-icons/fa";
+import AddedToCartButton from "./AddedToCartButton";
 import AddToCartButton from "./AddToCartButton";
 import QuickViewButton from "./QuickViewButton";
 
@@ -8,6 +9,7 @@ export default function SingleCartInfo() {
       <FaRegHeart className="text-white text-xl align-end mt-1" />
 
       <div className="w-full space-y-2">
+         <AddedToCartButton />
          <AddToCartButton />
          <QuickViewButton />
       </div>
