@@ -18,7 +18,7 @@ export default function AddToCartButton({product}) {
     });
   }
   return (
-    <div className="flex items-center justify-center gap-2 rounded text-white text-sm border border-white p-1 bg-transparent/40"
+    <div className="flex items-center justify-center gap-2 rounded text-white text-sm border border-white p-1 bg-transparent/40 cursor-pointer"
     onClick={handleAddToCart}
     >
       <BiCartAdd className="text-lg" />

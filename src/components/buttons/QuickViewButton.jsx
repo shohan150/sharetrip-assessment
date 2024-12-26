@@ -13,13 +13,11 @@ export default function QuickViewButton({product}) {
   };
 
   return (
-    <div className="flex items-center justify-center gap-2 rounded text-white text-sm border border-white p-1 bg-transparent/40" onClick={handleOpenModal}>
+    <div className="flex items-center justify-center gap-2 rounded text-white text-sm border border-white p-1 bg-transparent/40 cursor-pointer" onClick={handleOpenModal}>
       <MdOutlineRemoveRedEye className="text-lg" />
       <p className="mb-1">Quick View</p>
 
-      {isModalOpen && <ProductModal onClose={handleCloseModal}>
-        <h2 className="text-xl font-bold">{product.title}</h2>
-      </ProductModal>}
+      {isModalOpen && <ProductModal product={product} onClose={handleCloseModal} />}
     </div>
   )
 }

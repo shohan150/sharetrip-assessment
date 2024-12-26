@@ -19,7 +19,7 @@ export default function AddedToCartButton({product}) {
   }
 
   return (
-    <div className="flex items-center justify-between gap-2 bg-buttonGreen text-white text-sm p-[7px] rounded">
+    <div className="flex items-center justify-between gap-2 bg-buttonGreen text-white text-sm p-[7px] rounded cursor-pointer">
       {quantity >1 ? <FaMinus onClick={handleDecrease} /> : <LuTrash2 onClick={handleRemove} />}
       <span className="mb-1 leading-none">{quantity} Added to Cart</span>
       <FaPlus onClick={handleIncrease} />

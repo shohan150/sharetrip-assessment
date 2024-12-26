@@ -1,6 +1,6 @@
 import useFetchProducts from "../hooks/useFetchProducts.js";
+import Loading from "./common/Loading";
 import ProductCard from "./product-card/ProductCard.jsx";
-import Loading from "./common/Loading"
 
 export default function ProductList() {
   const { products, loading, error } = useFetchProducts();
@@ -14,7 +14,7 @@ export default function ProductList() {
     }
   
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
       {
         products.map((product) => <ProductCard key={product.id} product={product} />)
       }
