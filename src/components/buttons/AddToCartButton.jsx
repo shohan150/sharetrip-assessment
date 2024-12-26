@@ -1,4 +1,5 @@
 import { BiCartAdd } from "react-icons/bi";
+import { toast } from "react-toastify";
 import useCart from "../../hooks/useCart";
 
 export default function AddToCartButton({product}) {
@@ -13,9 +14,11 @@ export default function AddToCartButton({product}) {
         image: product.thumbnail,
         quantity: 1,
         price: product.price,
-        discount: product.discountPercentage,
+        discountPercentage: product.discountPercentage,
       },
     });
+
+    toast.success(`${product.title} Added to Cart`);
   }
   return (
     <div className="flex items-center justify-center gap-2 rounded text-white text-sm border border-white p-1 bg-transparent/40 cursor-pointer"

@@ -1,5 +1,6 @@
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { LuTrash2 } from "react-icons/lu";
+import { toast } from "react-toastify";
 import useCart from "../../hooks/useCart";
 
 export default function AddedToCartButton({product}) {
@@ -8,14 +9,20 @@ export default function AddedToCartButton({product}) {
 
   function handleIncrease() {
     dispatch({type: "increase-quantity", payload: {id: product.id}});
+
+    toast.success(`${quantity + 1} ${product.title} have been added to cart.`);
   }
 
   function handleDecrease() {
     dispatch({type: "decrease-quantity", payload: {id: product.id}});
+
+    toast.warning(`1 removed. ${quantity - 1} ${product.title} are in the cart.`);
   }
 
   function handleRemove() {
     dispatch({type: "remove-from-cart", payload: {id: product.id}});
+
+    toast.error(`${product.title} have been removed from the cart.`);
   }
 
   return (

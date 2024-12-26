@@ -12,7 +12,17 @@ export default function App() {
     <Header />
     <div className="container mx-auto font-murecho">
       <ProductList />
-      <ToastContainer />
+      <ToastContainer 
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"/>
     </div>
     <div id="modal"></div>
   </CartProvider>
