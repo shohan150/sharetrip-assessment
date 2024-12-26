@@ -23,7 +23,7 @@ export default function Header() {
           />
         )
       }
-      <nav className="flex items-center justify-between px-12 py-6 mb-9 border-b-2 border-gray-200">
+      <nav className="flex items-center justify-between px-12 py-6 mb-4 border-b-2 border-gray-200">
 
          <h3 className="text-2xl text-skyBlue font-bold tracking-wider">Assessment</h3>
 

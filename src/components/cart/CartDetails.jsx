@@ -11,7 +11,7 @@ export default function CartDetails({closeCart}) {
   function handleClearCart(){
     dispatch({type: "empty-cart"});
 
-    toast.error("Cart has been cleared.");
+    state.cartItems.length && toast.error("Cart has been cleared.");
   }
 
   const calculateTotal = () => {

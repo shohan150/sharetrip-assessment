@@ -30,6 +30,11 @@ export default function CartItem ({
     toast.warning(`1 removed. ${quantity - 1} ${title} are in the cart.`);
   }
 
+  function handleRemove() {
+    dispatch({type: "remove-from-cart", payload: {id}});
+    toast.error(`${title} have been removed from the cart.`);
+  }
+
   return (
     <div className="flex items-center justify-between gap-2 border rounded">
       <div className="flex gap-3">
@@ -63,7 +68,7 @@ export default function CartItem ({
         </h3>
         <RiDeleteBin6Line
           className="ml-auto mr-2 text-red-500 cursor-pointer text-2xl"
-          onClick={() => dispatch({type: "remove-from-cart", payload: {id}})}
+          onClick={handleRemove}
         />
       </div>
     </div>
