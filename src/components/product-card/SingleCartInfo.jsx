@@ -1,7 +1,7 @@
 import { FaRegHeart } from "react-icons/fa";
-import AddedToCartButton from "./AddedToCartButton";
-import AddToCartButton from "./AddToCartButton";
-import QuickViewButton from "./QuickViewButton";
+import AddToCartButton from "../buttons/AddToCartButton";
+import AddedToCartButton from "../buttons/AddedToCartButton";
+import QuickViewButton from "../buttons/QuickViewButton";
 
 export default function SingleCartInfo() {
   return (

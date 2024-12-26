@@ -1,4 +1,4 @@
-import calculateDiscount from "../utils/calculateDiscount";
+import calculateDiscount from "../../utils/calculateDiscount";
 import DiscountTag from "./DiscountTag";
 "../../public/discount-amount.png"
 export default function ProductDetails({product}) {

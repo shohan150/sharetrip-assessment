@@ -1,5 +1,5 @@
 import useFetchProducts from "../hooks/useFetchProducts.js";
-import ProductCard from "./ProductCard.jsx";
+import ProductCard from "./product-card/ProductCard.jsx";
 
 export default function ProductList() {
   const { products, loading, error } = useFetchProducts();
