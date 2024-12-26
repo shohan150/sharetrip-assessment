@@ -1,27 +1,35 @@
 import {
-   IoIosAddCircleOutline,
-   IoIosRemoveCircleOutline,
+  IoIosAddCircleOutline,
+  IoIosRemoveCircleOutline,
 } from "react-icons/io";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import useCart from "../../hooks/useCart";
 
 export default function CartItem ({
   id,
-  thumbnail,
+  image,
   title,
   price,
   quantity,
-  rating,
-  category,
   discountPercentage = 0,
 }) {
 
+  const {state, dispatch} = useCart();
+
+  function handleIncrease() {
+    dispatch({type: "increase-quantity", payload: {id}});
+  }
+
+  function handleDecrease() {
+    dispatch({type: "decrease-quantity", payload: {id}});
+  }
   return (
-    <div className="grid grid-cols-7 gap-3 border items-center">
-      <img src={thumbnail} alt="thumbnail" className="h-20 col-span-2" />
-      <div className="col-span-3">
+    <div className="flex items-center justify-between gap-2 border p-2">
+      <img src={image} alt="thumbnail" className="w-20 mr-2" />
+      <div>
         <h3 className="font-bold leading-4">{title}</h3>
         <div className="flex space-x-2 items-center">
-          <h3 className="font-semibold">${result.toFixed(2)}</h3>
+          <h3 className="font-semibold">${price}</h3>
           {discountPercentage !== 0 && (
             <span className="text-xs">-{discountPercentage}%</span>
           )}
@@ -30,10 +38,12 @@ export default function CartItem ({
         <div className="flex items-center space-x-1">
           <IoIosRemoveCircleOutline
             className="cursor-pointer hover:opacity-80"
+            onClick={handleDecrease}
           />
           <span data-test="cart-item-quantity">{quantity}</span>
           <IoIosAddCircleOutline
             className="cursor-pointer hover:opacity-80"
+            onClick={handleIncrease}
           />
         </div>
       </div>

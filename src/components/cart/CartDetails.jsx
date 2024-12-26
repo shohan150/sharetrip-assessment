@@ -36,8 +36,8 @@ export default function CartDetails({closeCart}) {
           />
         </div>
         <div className="mt-6 space-y-2">
-          {state.cartData?.length > 0 ? (
-            state.cartData.map((item) => <CartItem key={item.id} {...item} />)
+          {state.cartItems?.length > 0 ? (
+            state.cartItems.map((item) => <CartItem key={item.id} {...item} />)
           ) : (
             <div className="flex flex-col justify-center items-center p-4">
               <p className="text-center text-xl my-2">Your cart is empty</p>

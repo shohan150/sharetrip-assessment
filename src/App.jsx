@@ -14,6 +14,7 @@ export default function App() {
       <ProductList />
       <ToastContainer />
     </div>
+    <div id="modal"></div>
   </CartProvider>
   );
 }

@@ -32,9 +32,9 @@ export default function Header() {
             onClick={handleOpenCart}
          >
             <BsCartCheck className="text-2xl text-textGray" />
-            {state.cartData.length > 0 && (
-               <span className="rounded-full absolute top-[-12px] left-[28px] bg-buttonGreen text-white text-center p-[2px] w-[30px] h-[30px]">
-               {state.cartData.length}
+            {state.cartItems.length > 0 && (
+               <span className="rounded-full absolute bottom-3 left-3 bg-buttonGreen text-white text-xs text-center p-[2px] w-5 h-5">
+               {state.cartItems.length}
                </span>
             )}
          </div>

@@ -1,28 +1,29 @@
 const initialState = {
-  cartData: [],
+  cartItems: [],
 };
+
 const cartReducer = (state, action) => {
   switch (action.type) {
     case "add-to-cart":
       return {
         ...state,
-        cartData: [...state.cartData, action.payload],
+        cartItems: [...state.cartItems, action.payload],
       };
       break;
 
     case "remove-from-cart":
       return {
         ...state,
-        cartData: state.cartData.filter(
+        cartItems: state.cartItems.filter(
           (item) => item.id !== action.payload.id
         ),
       };
       break;
 
-    case "icrease-quantity":
+    case "increase-quantity":
       return {
         ...state,
-        cartData: state.cartData.map(item => {
+        cartItems: state.cartItems.map(item => {
           if (item.id === action.payload.id) {
             return { ...item, quantity: item.quantity + 1 };
           }
@@ -34,8 +35,8 @@ const cartReducer = (state, action) => {
     case "decrease-quantity":
       return {
         ...state,
-        cartData: state.cartData.map(item => {
-          if (item.id === action.payload.id) {
+        cartItems: state.cartItems.map(item => {
+          if (item.id === action.payload.id && item.quantity > 0) {
             return { ...item, quantity: item.quantity - 1 };
           }
           return item;
@@ -46,10 +47,10 @@ const cartReducer = (state, action) => {
     case "empty-cart" :
       return {
         ...state,
-        cartData: [],
+        cartItems: [],
       };
       break;
-      
+
     default:
       return state;
   }
