@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 
-const useFetchProducts = () => {
+const useFetchProducts = (initialUrl) => {
    const [products, setProducts] = useState([]);
+   const [url, setUrl] = useState(initialUrl);
+   const [totalProducts, setTotalProducts] = useState(0);
    const [loading, setLoading] = useState(false);
    const [error, setError] = useState(null);
 
@@ -11,9 +13,10 @@ const useFetchProducts = () => {
       setError(null);
 
       try {
-        const response = await fetch('https://dummyjson.com/products?limit=10');
-        const allProducts = await response.json();
-        setProducts(allProducts.products);
+        const response = await fetch(url);
+        const getProducts = await response.json();
+        setProducts([...products, ...getProducts.products]);
+        setTotalProducts(getProducts.total);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -22,9 +25,10 @@ const useFetchProducts = () => {
     };
 
     fetchData();
-  }, []);
+  }, [url]);
 
-   return { products, loading, error };
+   return { products, loading, error, setUrl, totalProducts };
 }; 
 
 export default useFetchProducts;
+
