@@ -5,33 +5,36 @@ import {
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { toast } from "react-toastify";
 import useCart from "../../hooks/useCart";
+import { CartModel } from "../../models/Cart";
 import calculateDiscount from "../../utils/calculateDiscount";
 
-export default function CartItem ({
+export default function CartItem({
   id,
   image,
   title,
   price,
   quantity,
   discountPercentage = 0,
-}) {
+}: CartModel) {
+  const { dispatch } = useCart();
 
-  const {state, dispatch} = useCart();
-
-  const {finalPrice, discountAmount} = calculateDiscount(price, discountPercentage);
+  const { finalPrice, discountAmount } = calculateDiscount(
+    price,
+    discountPercentage
+  );
 
   function handleIncrease() {
-    dispatch({type: "increase-quantity", payload: {id}});
+    dispatch({ type: "increase-quantity", payload: { id } });
     toast.success(`${quantity + 1} ${title} have been added to cart.`);
   }
 
   function handleDecrease() {
-    dispatch({type: "decrease-quantity", payload: {id}});
+    dispatch({ type: "decrease-quantity", payload: { id } });
     toast.warning(`1 removed. ${quantity - 1} ${title} are in the cart.`);
   }
 
   function handleRemove() {
-    dispatch({type: "remove-from-cart", payload: {id}});
+    dispatch({ type: "remove-from-cart", payload: { id } });
     toast.error(`${title} have been removed from the cart.`);
   }
 
@@ -44,7 +47,10 @@ export default function CartItem ({
           <div className="flex space-x-2 items-center">
             <h3 className="font-semibold">৳ {(price * quantity).toFixed(2)}</h3>
             {discountPercentage > 0 && (
-              <span className="text-xs"> save ৳ {(discountAmount * quantity).toFixed(2)}</span>
+              <span className="text-xs">
+                {" "}
+                save ৳ {(discountAmount * quantity).toFixed(2)}
+              </span>
             )}
           </div>
 
@@ -73,4 +79,4 @@ export default function CartItem ({
       </div>
     </div>
   );
-};
+}

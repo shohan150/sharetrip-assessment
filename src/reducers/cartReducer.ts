@@ -1,8 +1,19 @@
+import { CartModel } from "../models/Cart";
+
 const initialState = {
   cartItems: [],
 };
 
-const cartReducer = (state, action) => {
+type cartStateType = {
+  cartItems: CartModel[] | [];
+};
+
+type cartActionType = {
+  type: string;
+  payload: CartModel | { id: number };
+};
+
+const cartReducer = (state: cartStateType, action: cartActionType) => {
   switch (action.type) {
     case "add-to-cart":
       return {
@@ -23,7 +34,7 @@ const cartReducer = (state, action) => {
     case "increase-quantity":
       return {
         ...state,
-        cartItems: state.cartItems.map(item => {
+        cartItems: state.cartItems.map((item) => {
           if (item.id === action.payload.id) {
             return { ...item, quantity: item.quantity + 1 };
           }
@@ -35,7 +46,7 @@ const cartReducer = (state, action) => {
     case "decrease-quantity":
       return {
         ...state,
-        cartItems: state.cartItems.map(item => {
+        cartItems: state.cartItems.map((item) => {
           if (item.id === action.payload.id && item.quantity > 0) {
             return { ...item, quantity: item.quantity - 1 };
           }
@@ -44,7 +55,7 @@ const cartReducer = (state, action) => {
       };
       break;
 
-    case "empty-cart" :
+    case "empty-cart":
       return {
         ...state,
         cartItems: [],
@@ -57,4 +68,3 @@ const cartReducer = (state, action) => {
 };
 
 export { cartReducer, initialState };
-
